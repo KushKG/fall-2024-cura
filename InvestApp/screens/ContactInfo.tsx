@@ -54,12 +54,10 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 16,
-    paddingBottom: 16,
+    paddingBottom: 12,
     paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#E1E1E1",
   },
   headerText: {
     fontSize: 18,
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 35,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   profileImage: {
     width: 150,
@@ -90,12 +88,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   infoItem: {
-    marginBottom: 20, // Adjust as needed
+    marginBottom: 20,
   },
   infoLabel: {
     fontSize: 12,
-    color: "#000",
-    marginBottom: 4, // Space between label and input
+    color: "#333333",
   },
   inputContainer: {
     borderBottomWidth: 1,
@@ -104,9 +101,8 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 16,
-    color: "#707070",
+    color: "#333333",
     paddingVertical: 8,
-    paddingHorizontal: 0, // No side padding to align text to full width of container
   },
 });
 
