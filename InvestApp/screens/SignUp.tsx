@@ -1,14 +1,11 @@
-import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import AssetLogo from "../assets/SignUp/AssetLogo.svg";
 
 const SignUp = () => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image
-          source={require("../assets/SignUp/AssetLogo.png")}
-          style={styles.image}
-        />
+        <AssetLogo style={styles.image} />
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.headerText}>
@@ -45,7 +42,6 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 273.23,
-    resizeMode: "contain",
   },
   textContainer: {
     alignItems: "center",
