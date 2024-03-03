@@ -10,6 +10,8 @@ import {
   Image,
 } from "react-native";
 import CloseButton from "../assets/AssetPage/CloseButton.svg";
+import AssetUp from "../assets/AssetPage/AssetUp.svg";
+import { LinearGradient } from "expo-linear-gradient";
 
 type HistoryItem = {
   transactionType: string;
@@ -50,7 +52,14 @@ const AssetPage = () => {
 
   const renderHistoryItem = (item: HistoryItem) => (
     <View style={styles.historyItem}>
-      <Text style={styles.historyAmount}>{item.amount}</Text>
+      <Text
+        style={[
+          styles.historyAmount,
+          { color: item.transactionType === "Sell" ? "#00B907" : "#000" },
+        ]}
+      >
+        {item.amount}
+      </Text>
       <View style={styles.historyDetail}>
         <Text style={styles.historyTransactionType}>
           {item.transactionType} "{item.stockSymbol}" Stock
@@ -78,24 +87,33 @@ const AssetPage = () => {
                 />
               </TouchableOpacity>
             </View>
-
-            <Text style={styles.totalAssetText}>
-              Your total asset portfolio
-            </Text>
-            <Text style={styles.assetValue}>N203,935</Text>
-            <Text style={styles.assetPercentage}>+2%</Text>
+            <View style={styles.modalBody}>
+              <Text style={styles.totalAssetText}>
+                Your total asset portfolio
+              </Text>
+              <View style={styles.assetRow}>
+                <Text style={styles.assetValue}>N203,935</Text>
+                <AssetUp style={styles.AssetUp} />
+                <Text style={styles.assetPercentage}>+2%</Text>
+              </View>
+            </View>
 
             <View style={styles.currentPlansContainer}>
               <Text style={styles.currentPlansTitle}>Current Plans</Text>
-              <Image
-                source={require("../assets/AssetPage/Coin.png")}
-                style={styles.planImage}
-              />
-              <Text style={styles.planName}>Gold</Text>
-              <Text style={styles.planReturn}>30% return</Text>
-              <TouchableOpacity onPress={() => {}}>
-                <Text style={styles.seeAllPlansText}>See All Plans</Text>
-              </TouchableOpacity>
+              <LinearGradient
+                colors={["#F0C735", "#D98F39"]}
+                style={styles.currentPlansImage}
+              >
+                <Image
+                  source={require("../assets/AssetPage/Coin.png")}
+                  style={styles.planImage}
+                />
+                <Text style={styles.planName}>Gold</Text>
+                <Text style={styles.planReturn}>30% return</Text>
+                <TouchableOpacity onPress={() => {}}>
+                  <Text style={styles.seeAllPlansText}>See All Plans</Text>
+                </TouchableOpacity>
+              </LinearGradient>
             </View>
 
             <View style={styles.historySection}>
@@ -148,6 +166,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
+  modalBody: {
+    padding: 16,
+  },
+  assetRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   modalTitle: {
     fontSize: 22,
     fontWeight: "bold",
@@ -166,13 +191,21 @@ const styles = StyleSheet.create({
   },
   assetPercentage: {
     fontSize: 18,
-    color: "green",
-    marginBottom: 12,
+    color: "#00B907",
+  },
+  AssetUp: {
+    width: 16,
+    height: 16,
+    marginLeft: 20,
   },
   currentPlansContainer: {
     width: "100%",
-    alignItems: "center",
+    marginTop: 12,
     marginBottom: 12,
+    paddingHorizontal: 16,
+  },
+  currentPlansImage: {
+    borderRadius: 10,
   },
   currentPlansTitle: {
     fontSize: 18,
@@ -204,6 +237,7 @@ const styles = StyleSheet.create({
   historySection: {
     width: "100%",
     marginBottom: 20,
+    paddingHorizontal: 16,
   },
   sectionTitle: {
     fontSize: 18,
@@ -222,7 +256,6 @@ const styles = StyleSheet.create({
   historyAmount: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#000",
   },
   historyDetail: {
     alignItems: "flex-end",
